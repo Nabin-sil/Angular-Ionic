@@ -1,0 +1,32 @@
+<ion-header *ngIf="user">
+  <ion-toolbar color="primary">
+    <ion-title>Recepies</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-chip slot="end" color="dark">
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>{{user.username}}</ion-label>
+    </ion-chip>
+
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content *ngIf="user">
+  <ion-list>
+    <ion-item *ngFor="let re of recipes" [routerLink]="['./', re.id]">
+      <ion-avatar slot="start">
+        <ion-img [src]="re.imageUrl"></ion-img>
+      </ion-avatar>
+      <ion-label>{{re.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <a (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+
+</ion-content>

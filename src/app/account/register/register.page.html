@@ -1,0 +1,177 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+ <ion-content>
+<form>
+    <ion-item lines="full">
+        <ion-label position="floating" >Fullname</ion-label>
+  <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+        <ion-label position="floating" >Username</ion-label>
+  <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+        <ion-label position="floating" >Email</ion-label>
+  <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+        <ion-label position="floating" >Password</ion-label>
+  <ion-input type="password" required></ion-input>
+    </ion-item>
+
+
+    <ion-row>
+        <ion-col>
+            <ion-button type="submit" color="danger" expand="block">Sign in</ion-button>
+        </ion-col>
+    </ion-row>
+    
+
+</form>
+
+</ion-content>  -->
+
+<ion-header>
+  <ion-toolbar color="mango">
+    <ion-title>Registration</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="true">
+  <div class="center">
+    <img src="" class="smallLogo" />
+    <h1>Create Account</h1>
+  </div>
+  <!-- <form>
+      <ion-list>
+          <ion-item>
+              <ion-label position="stacked">First name</ion-label>
+              <ion-input autocomplete="off" name="firstName" type="text" [(ngModel)]="postData.firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Last name</ion-label>
+                <ion-input autocomplete="off" name="lastName" type="text" [(ngModel)]="postData.lastName"></ion-input>
+              </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input autocomplete="off" name="email" type="email" [(ngModel)]="postData.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input autocomplete="off" name="username" type="text" [(ngModel)]="postData.username"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input autocomplete="off" name="password" type="password" [(ngModel)]="postData.password"></ion-input>
+        </ion-item>
+  
+        <ion-item lines='none'>
+          Already have an account? <a routerLink='/login'>Sign in.</a>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" share="round" color="success" (click)="signupAction()">Registration</ion-button>
+    </form> -->
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item lines="full">
+        <ion-label position="floating">First name</ion-label>
+        <ion-input
+          autocomplete="off"
+          name="firstName"
+          type="text"
+          formControlName="firstName"
+        ></ion-input>
+      </ion-item>
+      <small *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <small *ngIf="f.firstName.errors.required">
+          First Name is required
+        </small>
+      </small>
+
+      <ion-item>
+        <ion-label position="floating">Last name</ion-label>
+        <ion-input
+          autocomplete="off"
+          name="lastName"
+          type="text"
+          formControlName="lastName"
+        ></ion-input>
+      </ion-item>
+      <small *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <small *ngIf="f.lastName.errors.required">Last Name is required</small>
+      </small>
+
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input
+          autocomplete="off"
+          name="username"
+          type="text"
+          formControlName="username"
+        ></ion-input>
+      </ion-item>
+      <small *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <small *ngIf="f.username.errors.required">Username is required</small>
+      </small>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          autocomplete="off"
+          name="email"
+          type="email"
+          formControlName="email"
+        ></ion-input>
+      </ion-item>
+      <small *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <small *ngIf="f.email.errors.required">Email is required</small>
+        <small *ngIf="f.email.errors.pattern">Email must be valid</small>
+      </small>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          autocomplete="off"
+          name="password"
+          type="password"
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
+
+      <small *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <small *ngIf="f.password.errors.required">Password is required</small>
+        <small *ngIf="f.password.errors.minlength"
+          >Password must be at least 6 characters</small
+        >
+      </small>
+
+      <ion-item lines="none">
+        Already have an account? <a routerLink="/account/login">Sign in.</a>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      [disabled]="loading"
+      type="submit"
+      share="round"
+      color="success"
+      >Registration</ion-button
+    >
+  </form>
+</ion-content>
